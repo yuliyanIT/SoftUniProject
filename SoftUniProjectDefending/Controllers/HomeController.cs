@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SoftUniProjectDefending.Models;
+using FaceitRankChecker.Models;
 using System.Diagnostics;
 
-namespace SoftUniProjectDefending.Controllers
+namespace FaceitRankChecker.Controllers
 {
     public class HomeController : Controller
     {

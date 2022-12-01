@@ -1,4 +1,4 @@
-namespace SoftUniProjectDefending.Models
+namespace FaceitRankChecker.Models
 {
     public class ErrorViewModel
     {
