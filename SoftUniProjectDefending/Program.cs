@@ -12,6 +12,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
@@ -38,6 +39,11 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "FaceitAPI",
+    pattern: "{controller=FaceitAPI}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();
