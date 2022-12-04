@@ -27,7 +27,7 @@ namespace FaceitRankChecker.Controllers
                     readTask.Wait();
                 }
             }
-            return readTask();
+            return Index();
         }
     }
 }
