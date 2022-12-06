@@ -1,21 +1,13 @@
-﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:58819",
-      "sslPort": 44388
-    }
-  },
+{
   "profiles": {
     "SoftUniProjectDefending": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7268;http://localhost:5268",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7268;http://localhost:5268"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -23,6 +15,18 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "https://frc.dev/FaceitRankChecker",
+      "sslPort": 0
+    },
+    "iisExpress": {
+      "applicationUrl": "",
+      "sslPort": 44388
     }
   }
 }
