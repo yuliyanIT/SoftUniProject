@@ -5,6 +5,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Web.Helpers;
 
@@ -12,29 +13,28 @@ namespace FaceitRankChecker.Controllers
 {
     public class FaceitAPI : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string nickname = "Marulqta")
         {
+            dynamic deserializedResponse = "";
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://open.faceit.com/data/v4");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(
-                    new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer 0a486c04-b9c1-406f-b5c2-087d4458a86d");
+                string auth = "8a136896-6859-4593-ba6a-03b12a5b91ba";
+                client.BaseAddress = new Uri("https://open.faceit.com");
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {auth}");
                 //HTTP GET
-                var responseTask = client.GetAsync("players?nickname=Marulqta&game=csgo");
-                responseTask.Wait();
 
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsStreamAsync();
-                    readTask.Wait();
-                }
+                var url = $"/data/v4/players?nickname={nickname}&game=csgo";
+                var res = await client.GetAsync(url);
+                var content = await res.Content.ReadAsStringAsync();
+
+                deserializedResponse = JsonConvert.DeserializeObject(content);
+                Console.WriteLine(content);
             }
-            return Index();
-        }
+            ViewData["nickname"] = deserializedResponse.nickname;
+            ViewData["elo"] = deserializedResponse.games["csgo"].faceit_elo;
+            return View();
 
+        }
         public async Task<IActionResult> FaceitCallbackAsync(string code)
         {
             string auth = "e9e58299-32c8-425d-9d12-0b61f4955774:ggmW0rmIgTXbZakY1wMU0jcRiquBYpPP9Vu1OzLb";
