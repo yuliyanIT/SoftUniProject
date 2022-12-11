@@ -53,9 +53,12 @@ namespace FaceitRankChecker.Controllers
                 var res = await client.PostAsync(url,new FormUrlEncodedContent(data));
                 var content = await res.Content.ReadAsStringAsync();
                 Console.WriteLine(content);
+                
                
             }
             return View();
         }
+
+        
     }
 }

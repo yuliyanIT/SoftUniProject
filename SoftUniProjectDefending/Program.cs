@@ -8,6 +8,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -49,7 +50,6 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "FaceitCallback",
-    //pattern: "{controller=FaceitAPI}/{action=FaceitCallback}/{code?}");
     pattern: "FaceitCallback/{code?}",
     defaults: new { controller = "FaceitAPI", action = "FaceitCallback" });
 
