@@ -51,8 +51,11 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "FaceitCallback",
     pattern: "{controller=FaceitCallback}/{action=Index}/{code?}");
-    //pattern: "FaceitCallback/{code?}",
-    //defaults: new { controller = "FaceitCallbackController", action = "FaceitCallback" });
+//pattern: "FaceitCallback/{code?}",
+//defaults: new { controller = "FaceitCallbackController", action = "FaceitCallback" });
+app.MapControllerRoute(
+    name: "EloOverlay",
+    pattern: "{controller=EloOverlay}/{action=Index}/{nickname?}");
 
 app.MapRazorPages();
 
