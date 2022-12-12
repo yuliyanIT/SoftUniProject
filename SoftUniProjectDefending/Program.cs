@@ -50,8 +50,9 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "FaceitCallback",
-    pattern: "FaceitCallback/{code?}",
-    defaults: new { controller = "FaceitAPI", action = "FaceitCallbackController" });
+    pattern: "{controller=FaceitCallback}/{action=Index}/{code?}");
+    //pattern: "FaceitCallback/{code?}",
+    //defaults: new { controller = "FaceitCallbackController", action = "FaceitCallback" });
 
 app.MapRazorPages();
 

@@ -30,8 +30,10 @@ namespace FaceitRankChecker.Controllers
                 deserializedResponse = JsonConvert.DeserializeObject(content);
                 Console.WriteLine(content);
             }
+                       
             ViewData["nickname"] = deserializedResponse.nickname;
             ViewData["elo"] = deserializedResponse.games["csgo"].faceit_elo;
+            ViewData["avatar"] = deserializedResponse.avatar;
             return View();
 
         }
