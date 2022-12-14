@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
+using System.Drawing.Text;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -15,6 +16,7 @@ namespace FaceitRankChecker.Controllers
     {
         public async Task<IActionResult> Index(string nickname = "Marulqta")
         {
+            
             dynamic deserializedResponse = "";
             using (var client = new HttpClient())
             {
@@ -28,8 +30,7 @@ namespace FaceitRankChecker.Controllers
                 var content = await res.Content.ReadAsStringAsync();
 
                 deserializedResponse = JsonConvert.DeserializeObject(content);
-                Console.WriteLine(content);
-            }
+             }
                        
             ViewData["nickname"] = deserializedResponse.nickname;
             ViewData["elo"] = deserializedResponse.games["csgo"].faceit_elo;

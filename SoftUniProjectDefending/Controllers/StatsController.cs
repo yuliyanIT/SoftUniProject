@@ -34,9 +34,18 @@ namespace FaceitRankChecker.Controllers
 
                 var stream = deserializedResponse.id_token;
                 var handler = new JwtSecurityTokenHandler();
+
                 var jsonToken = handler.ReadToken(stream.ToString());
                 var tokenS = jsonToken as JwtSecurityToken;
-                               
+                Console.WriteLine(tokenS);
+
+
+                ViewData["nickname"] = tokenS.Claims.First(c => c.Type == "nickname").Value;
+                ViewData["picture"] = tokenS.Claims.First(c => c.Type == "picture").Value;
+                ViewData["email"] = tokenS.Claims.First(c => c.Type == "email").Value;
+                ViewData["name"] = tokenS.Claims.First(c => c.Type == "given_name").Value;
+                ViewData["familyname"] = tokenS.Claims.First(c => c.Type == "family_name").Value;
+
 
             }
             return View();
