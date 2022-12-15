@@ -22,10 +22,12 @@ namespace FaceitRankChecker.Controllers
                 deserializedResponse = JsonConvert.DeserializeObject(content);
                 Console.WriteLine(content);
             }
-                     
+
             ViewData["elo"] = deserializedResponse.games["csgo"].faceit_elo;
+            ViewData["levelLabel"] = deserializedResponse.games["csgo"].skill_level_label;
             return View();
 
         }
-    }
+
+    }   
 }

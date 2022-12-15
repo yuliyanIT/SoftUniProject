@@ -39,6 +39,7 @@ namespace FaceitRankChecker.Controllers
                     var jsonToken = handler.ReadToken(stream.ToString());
                     var tokenS = jsonToken as JwtSecurityToken;
                     Console.WriteLine(tokenS);
+                    Console.WriteLine(stream);
 
                    
                     ViewData["nickname"] = tokenS.Claims.First(c => c.Type == "nickname").Value;

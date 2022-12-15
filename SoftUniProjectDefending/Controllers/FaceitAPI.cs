@@ -1,5 +1,7 @@
 ﻿using FaceitRankChecker.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using System;
 using System.Drawing.Text;
@@ -10,13 +12,14 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Web.Helpers;
 
+
 namespace FaceitRankChecker.Controllers
 {
     public class FaceitAPI : Controller
     {
         public async Task<IActionResult> Index(string nickname = "Marulqta")
         {
-            
+
             dynamic deserializedResponse = "";
             using (var client = new HttpClient())
             {
@@ -30,14 +33,14 @@ namespace FaceitRankChecker.Controllers
                 var content = await res.Content.ReadAsStringAsync();
 
                 deserializedResponse = JsonConvert.DeserializeObject(content);
-             }
-                       
+            }
+
             ViewData["nickname"] = deserializedResponse.nickname;
             ViewData["elo"] = deserializedResponse.games["csgo"].faceit_elo;
             ViewData["avatar"] = deserializedResponse.avatar;
-            return View();
 
+                return View();
+          
         }
-                
     }
 }

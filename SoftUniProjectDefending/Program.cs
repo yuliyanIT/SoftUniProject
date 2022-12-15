@@ -56,10 +56,6 @@ app.MapControllerRoute(
     name: "EloOverlay",
     pattern: "{controller=EloOverlay}/{action=Index}/{nickname?}");
 
-app.MapControllerRoute(
-    name: "Stats",
-    pattern: "{controller=StatsController}/{action=Index}/{code?}");
-
 app.MapRazorPages();
 
 app.Run();
