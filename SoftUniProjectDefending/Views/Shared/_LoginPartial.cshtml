@@ -25,9 +25,7 @@ else
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login with FACEIT</a>
-        </li>
+       
        
 }
  </ul>
@@ -55,6 +53,7 @@ else
             var initParams = {
                 client_id: 'e9e58299-32c8-425d-9d12-0b61f4955774',
                 response_type: 'code',
+                state: 'id_token',
                 redirect_popup: false,
                 debug: true,
                  
