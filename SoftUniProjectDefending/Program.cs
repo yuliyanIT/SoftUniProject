@@ -69,6 +69,10 @@ app.MapControllerRoute(
     name: "Matches",
     pattern: "{controller=MatchesController}/{action=Index}/{code?}");
 
+app.MapControllerRoute(
+    name: "SearchPlayer",
+    pattern: "{controller=SearchPlayer}/{action=Index}/{code?}");
+
 app.MapRazorPages();
 
 app.Run();

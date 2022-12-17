@@ -28,14 +28,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Info">Info</a>
                          </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Matches" asp-action="Index">Matches</a>
-                        </li>
+                       
 
                         @if (SignInManager.IsSignedIn(User)){
-                   <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="FaceitAPI" asp-action="Index">FaceitAPI</a>
                          </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Matches" asp-action="Index">Matches</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="SearchPlayer" asp-action="Index">Search Player</a>
+                            </li>
                        
                         }
                         else

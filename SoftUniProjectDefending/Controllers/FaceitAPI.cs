@@ -17,6 +17,7 @@ namespace FaceitRankChecker.Controllers
 {
     public class FaceitAPI : Controller
     {
+
         public async Task<IActionResult> Index(string nickname = "Marulqta")
         {
 

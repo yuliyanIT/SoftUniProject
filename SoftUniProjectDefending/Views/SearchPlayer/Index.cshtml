@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<body style="background-color:#b0573c;">
+    <div class="text-center">
+        <h1 class="display-4", style="color: black">Search Player</h1>
+        
+        <a>
+        <img src="https://corporate.faceit.com/wp-content/uploads/2017/03/media-asset-logo-dark-high.png"  width="450" height="101">
+        </a>
+        <form class="menu-form" enctype="multipart/form-data" asp-controller="SearchPlayer" asp-action="Search" method="post" >
+        <input class="menu-input" type="text" name="nickname" size="50" placeholder=" Type Faceit Nickname" autocomplete="off" autofocus="autofocus" aria-label="Input field"><br>
+        <input id="searchButton" class="menu-search" type="submit" value="Search">
+          </form>
+     </div> 
+
+</body>
