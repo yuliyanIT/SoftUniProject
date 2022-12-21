@@ -1,49 +1,45 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FaceitRankChecker.Infrastructure.Data;
+using FaceitRankChecker.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
 namespace FaceitRankChecker.Controllers
 {
-    public class MatchesController : Controller
-    {
-        public async Task<IActionResult> Index()
+    
+        [ApiController]
+        [Route("api/[controller]")]
+        public class MatchController : ControllerBase
         {
-            dynamic deserializedResponse = "";
-            using (var client = new HttpClient())
+            private readonly ApplicationDbContext _context;
+
+            private List<Match> _matches;
+            public MatchController(ApplicationDbContext context)
             {
-                string auth = "8a136896-6859-4593-ba6a-03b12a5b91ba";
-                client.BaseAddress = new Uri("https://open.faceit.com");
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {auth}");
-                //HTTP GET
-
-                var url = $"/data/v4/matches/1-c5a00694-4fbc-4f23-a47a-a0cd4c38bc66";
-                var res = await client.GetAsync(url);
-                var content = await res.Content.ReadAsStringAsync();
-
-                deserializedResponse = JsonConvert.DeserializeObject(content);
-
-
-                ViewData["competitionName"] = deserializedResponse.competition_name;
-
-                ViewData["player1"] = deserializedResponse.nickname = "Marulqta";
-                
-                //ViewData["player2"]
-                //ViewData["player3"] 
-                //ViewData["player4"] 
-                //ViewData["player5"] 
-                //ViewData["player6"] 
-                //ViewData["player7"] 
-                //ViewData["player8"] 
-                //ViewData["player9"] 
-                //ViewData["player10"]
+                _context = context;
+            
             }
 
-            return View();
+            [HttpGet]
+            public IActionResult GetMatches()
+            {
+                var matches = _context;
+                return Ok(matches);
+            }
+
+            [HttpPost]
+            public IActionResult CreateMatch([FromBody] Match match)
+            {
+                _context.Add(match);
+                _context.SaveChanges();
+                return CreatedAtAction(nameof(GetMatches), new { id = match.Id }, match);
+            }
         }
 
-        
+
     }
     
-}
+
 

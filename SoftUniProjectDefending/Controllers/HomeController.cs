@@ -2,6 +2,7 @@
 using FaceitRankChecker.Models;
 using System.Diagnostics;
 
+
 namespace FaceitRankChecker.Controllers
 {
     public class HomeController : Controller
@@ -17,6 +18,8 @@ namespace FaceitRankChecker.Controllers
         {
             return View();
         }
+        
+        
 
         public IActionResult Info()
         {

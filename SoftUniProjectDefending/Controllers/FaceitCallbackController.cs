@@ -10,7 +10,9 @@ namespace FaceitRankChecker.Controllers
                
             public async Task<IActionResult> Index(string code)
             {
-                string auth = "e9e58299-32c8-425d-9d12-0b61f4955774:ggmW0rmIgTXbZakY1wMU0jcRiquBYpPP9Vu1OzLb";
+            string clientId = "e9e58299-32c8-425d-9d12-0b61f4955774";
+            string clientSicret = "ggmW0rmIgTXbZakY1wMU0jcRiquBYpPP9Vu1OzLb";
+                string auth = $"{clientId}:{clientSicret}";
                 string encodedAuth = Convert.ToBase64String(Encoding.UTF8.GetBytes(auth));
 
 

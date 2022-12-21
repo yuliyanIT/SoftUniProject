@@ -1,20 +1,29 @@
-﻿@{
+﻿@model IEnumerable<FaceitRankChecker.Models.Match>
+@{
     ViewData["Title"] = "Matches";
 }
 <body style="background-color:#b0573c;">
     <div class="text-center">
         <h1 class="display-4", style="color: black">Match Information</h1>
-        <p>CompetitionName: @ViewData["competitionName"]</p>
-        <p>Player 1: @ViewData["player1"]</p>
-        <p>Player 2: @ViewData["player2"]</p>
-        <p>Player 3: @ViewData["player3"] </p>
-        <p>Player 5: @ViewData["player5"]  </p>
-       
-        <p>Player 6: @ViewData["player6"]</p>
-        <p>Player 7: @ViewData["player7"]</p>
-        <p>Player 8: @ViewData["player8"]</p>
-        <p>Player 9: @ViewData["player9"]</p>
-        <p>Player 10: @ViewData["player10"]</p>
-        
-         </div> 
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Team 1</th>
+                    <th>Team 2</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var match in Model)
+                {
+                    <tr>
+                        <td>@match.Date.ToShortDateString()</td>
+                        <td>@match.Team1</td>
+                        <td>@match.Team2</td>
+                        <td>@match.Score1 - @match.Score2</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 </body>
